@@ -1,15 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Markdown Viewer</title>
+  <!-- Include Marked.js from a CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+  </style>
+</head>
+<body>
 
-    February 2025   
-Su Mo Tu We Th Fr Sa
-                   1
- 2  3  4  5  6  7  8
- 9 10 11 12 13 14 15
-16 17 18 19 20 21 22
-23 24 25 26 27 28   
-                    
+  <!-- Hidden element containing Markdown -->
+  <div id="markdown-content" style="display: none;">
+
 # (VoidLinux) Make sound work on chromium for laptop MSI
 Fri Feb 14 14:32:15 EST 2025
-
 ```
 xbps-install pulseaudio
 pulseaudio -k
@@ -18,3 +29,21 @@ pulseaudio -D
 and then remove dir ~/.config/pulse/*
 reboot
 => worked like a charm!
+
+  </div>
+
+  <!-- Container where the converted HTML will appear -->
+  <div id="html-content"></div>
+
+  <script>
+    // Retrieve the Markdown text from the hidden element
+    var markdownText = document.getElementById('markdown-content').innerText;
+    // Convert the Markdown text into HTML
+    var htmlContent = marked.parse(markdownText);
+    // Insert the converted HTML into the container
+    document.getElementById('html-content').innerHTML = htmlContent;
+  </script>
+
+</body>
+</html>
+
