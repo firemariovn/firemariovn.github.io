@@ -24,13 +24,13 @@ a { color: inherit; }
 
 ## (VoidLinux) Make sound work on chromium for laptop MSI
 Fri Feb 14 14:32:15 EST 2025
-Command line:
-xbps-install pulseaudio
-pulseaudio -k
-pulseaudio -D
-and then remove dir ~/.config/pulse/*
-reboot
-=> worked like a charm!</pre>
+
+```console
+$ xbps-install pulseaudio
+$ pulseaudio -k
+$ pulseaudio -D
+```
+and then remove dir ~/.config/pulse/* -> reboot -> worked like a charm!</pre>
 </body>
 </html>
 <!-- vim: set foldmethod=manual : -->
