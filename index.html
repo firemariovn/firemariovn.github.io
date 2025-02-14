@@ -22,9 +22,24 @@ a { color: inherit; }
 > Blog using new technology text renderer! 
 > Support cross-platform, can you React do this? i don't think so.
 
+## (VoidLinux) Adjust volumn by key in i3wm via pulseaudio
+Fri Feb 14 16:19:45 EST 2025
+Run this to find which name of sound card or sound interface... i don't know:
+$ amixer scontrols
+In my case, i used headset named "USB Audio"
+Finally, put these line in ./config/i3/config
+``` i3config
+...
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set 'USB Audio' 10%+ unmute && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set 'USB Audio' 10%- unmute && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id amixer -q set 'USB Audio' toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id amixer -q set 'USB Audio' toggle && $refresh_i3status
+...
+```
+reload i3 or reboot.
+
 ## (VoidLinux) Make sound work on chromium for laptop MSI
 Fri Feb 14 14:32:15 EST 2025
-
 ```console
 $ xbps-install pulseaudio
 $ pulseaudio -k
